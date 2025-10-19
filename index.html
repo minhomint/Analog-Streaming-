@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💙 장민호 ANALOG Vol.1 유튜브 총공 💙</title>
+    <title>💙 장민호 ANALOG Vol.1 총공 💙</title>
     <style>
         * {
             margin: 0;
@@ -13,14 +13,13 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard", Arial, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            background: linear-gradient(135deg, #0d7377 0%, #14FFEC 50%, #00CEC9 100%);
             min-height: 100vh;
             padding: 10px;
             position: relative;
             overflow-x: hidden;
         }
         
-        /* 배경 애니메이션 */
         body::before {
             content: '';
             position: fixed;
@@ -29,8 +28,8 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 206, 201, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(126, 34, 206, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(0, 206, 201, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(20, 255, 236, 0.2) 0%, transparent 50%);
             animation: pulse 4s ease-in-out infinite;
             pointer-events: none;
         }
@@ -40,7 +39,6 @@
             50% { opacity: 1; }
         }
         
-        /* 떠다니는 하트 */
         .floating-hearts {
             position: fixed;
             top: 0;
@@ -64,12 +62,8 @@
                 transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
             }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
             100% {
                 transform: translateY(-100px) rotate(360deg);
                 opacity: 0;
@@ -83,15 +77,14 @@
             z-index: 2;
         }
         
-        /* 헤더 */
         .header {
-            background: linear-gradient(135deg, #00CEC9 0%, #0984e3 50%, #6c5ce7 100%);
+            background: linear-gradient(135deg, #00CEC9 0%, #14FFEC 100%);
             border-radius: 20px 20px 0 0;
             padding: 30px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 206, 201, 0.4);
         }
         
         .header::before {
@@ -115,8 +108,8 @@
             right: 15px;
             width: 45px;
             height: 45px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.6);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -124,10 +117,11 @@
             cursor: pointer;
             transition: all 0.3s;
             z-index: 10;
+            font-size: 20px;
         }
         
         .admin-lock:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.5);
             transform: scale(1.1);
         }
         
@@ -153,24 +147,23 @@
         
         .live-badge {
             display: inline-block;
-            background: #ff4757;
+            background: #00CEC9;
             color: white;
             padding: 8px 20px;
             border-radius: 20px;
             font-size: 14px;
             font-weight: 700;
             animation: blink 1.5s ease-in-out infinite;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.5);
         }
         
         @keyframes blink {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
+            50% { opacity: 0.7; }
         }
         
-        /* 총공 미션 배너 */
         .mission-banner {
-            background: linear-gradient(90deg, #ff6b6b 0%, #ff8e53 50%, #feca57 100%);
+            background: linear-gradient(90deg, #00CEC9 0%, #14FFEC 50%, #0dcaf0 100%);
             padding: 20px;
             text-align: center;
             color: white;
@@ -186,7 +179,6 @@
             50% { background-position: 100% 50%; }
         }
         
-        /* 비디오 플레이어 */
         .video-container {
             background: #000;
             position: relative;
@@ -268,7 +260,7 @@
         .next-btn {
             width: 100%;
             padding: 18px;
-            background: linear-gradient(135deg, #00CEC9 0%, #0984e3 100%);
+            background: linear-gradient(135deg, #00CEC9 0%, #14FFEC 100%);
             color: white;
             border: none;
             border-radius: 15px;
@@ -285,58 +277,15 @@
             box-shadow: 0 10px 30px rgba(0, 206, 201, 0.6);
         }
         
-        /* 총공 현황 */
         .stats-section {
             background: white;
             padding: 30px;
         }
         
-        .total-stats {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            color: white;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-        
-        .total-stats h3 {
-            font-size: 24px;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-        }
-        
-        .stat-box {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-        
-        .stat-label {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 8px;
-        }
-        
-        .stat-value {
-            font-size: 32px;
-            font-weight: 900;
-        }
-        
-        /* 테이블 */
         .table-container {
             overflow-x: auto;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 206, 201, 0.2);
         }
         
         table {
@@ -346,7 +295,7 @@
         }
         
         thead {
-            background: linear-gradient(135deg, #00CEC9 0%, #0984e3 100%);
+            background: linear-gradient(135deg, #00CEC9 0%, #14FFEC 100%);
             color: white;
         }
         
@@ -398,21 +347,6 @@
             font-size: 18px;
         }
         
-        .progress-bar-container {
-            margin-top: 8px;
-            background: #e9ecef;
-            height: 8px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #00CEC9 0%, #0984e3 100%);
-            border-radius: 10px;
-            transition: width 0.5s ease;
-        }
-        
         .initial-views {
             color: #636e72;
             font-weight: 600;
@@ -430,7 +364,6 @@
             font-size: 16px;
         }
         
-        /* 모달 */
         .modal {
             display: none;
             position: fixed;
@@ -512,7 +445,7 @@
         }
         
         .modal-btn-primary {
-            background: linear-gradient(135deg, #00CEC9 0%, #0984e3 100%);
+            background: linear-gradient(135deg, #00CEC9 0%, #14FFEC 100%);
             color: white;
         }
         
@@ -528,7 +461,6 @@
             display: none;
         }
         
-        /* 관리자 패널 */
         .admin-panel {
             max-width: 800px;
             max-height: 90vh;
@@ -553,6 +485,7 @@
             flex: 1;
             font-weight: 700;
             color: #2d3436;
+            font-size: 14px;
         }
         
         .admin-input {
@@ -573,7 +506,7 @@
         }
         
         .footer-heart {
-            color: #ff4757;
+            color: #00CEC9;
             animation: heartbeat 1.5s ease-in-out infinite;
             display: inline-block;
         }
@@ -584,17 +517,32 @@
             20%, 40% { transform: scale(1); }
         }
         
+        .firebase-status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 206, 201, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.4);
+        }
+        
         @media (max-width: 768px) {
             .header h1 { font-size: 32px; }
             .header h2 { font-size: 24px; }
             .video-title { font-size: 20px; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .admin-song-title { font-size: 12px; }
+            .admin-input { width: 100px; }
         }
     </style>
 </head>
 <body>
-    <!-- 떠다니는 하트 -->
     <div class="floating-hearts" id="floatingHearts"></div>
+    <div class="firebase-status" id="firebaseStatus">🔄 연결 중...</div>
 
     <!-- 비밀번호 모달 -->
     <div class="modal" id="passwordModal">
@@ -628,22 +576,18 @@
         </div>
     </div>
 
-    <!-- 메인 컨테이너 -->
     <div class="container">
-        <!-- 헤더 -->
         <div class="header">
             <div class="admin-lock" onclick="showPasswordModal()">🔒</div>
-            <h1>💙 장!하!다! 장민호 💙</h1>
+            <h1>💙 장민호 💙</h1>
             <h2>ANALOG Vol.1</h2>
             <div class="live-badge">🔴 LIVE 총공 진행중</div>
         </div>
 
-        <!-- 총공 미션 -->
         <div class="mission-banner">
             🔥 목표를 향해 함께 달려요! 으라차차차! 🔥
         </div>
 
-        <!-- 비디오 플레이어 -->
         <div class="video-container">
             <div class="video-wrapper">
                 <iframe id="videoFrame" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -665,26 +609,7 @@
             </div>
         </div>
 
-        <!-- 총공 현황 -->
         <div class="stats-section">
-            <div class="total-stats">
-                <h3>🎯 총공 성과</h3>
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-label">총 조회수</div>
-                        <div class="stat-value" id="totalViews">0</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">총 증가량</div>
-                        <div class="stat-value" id="totalIncrease">+0</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">평균 증가율</div>
-                        <div class="stat-value" id="avgIncrease">0%</div>
-                    </div>
-                </div>
-            </div>
-
             <div class="table-container">
                 <table>
                     <thead>
@@ -700,11 +625,10 @@
             </div>
         </div>
 
-        <!-- 푸터 -->
         <div class="footer">
             💙 Made with <span class="footer-heart">💙</span> by 민호특공대
             <div style="margin-top: 10px; font-size: 13px; opacity: 0.7;">
-                45~55초 랜덤 구간에서 자동 재생됩니다
+                곡별 45~55초 랜덤 구간에서 자동 재생됩니다
             </div>
             <div style="margin-top: 10px; font-size: 12px; opacity: 0.6; color: #00CEC9;">
                 🔥 Firebase 실시간 동기화 🔥
@@ -712,15 +636,12 @@
         </div>
     </div>
 
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
     <script>
-        // ========== Firebase 설정 ==========
-        // TODO: Firebase 콘솔에서 프로젝트 생성 후 여기에 설정 정보를 입력하세요
+        // Firebase 설정 - 여기에 Firebase 프로젝트 정보를 입력하세요
         const firebaseConfig = {
-      const firebaseConfig = {
   apiKey: "AIzaSyDk0r98Ag5htVKH-vVxUzG52SYNcX1G0sA",
   authDomain: "analog-vol1-mv.firebaseapp.com",
   databaseURL: "https://analog-vol1-mv-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -731,18 +652,10 @@
   measurementId: "G-SRN2TZCE82"
 };
 
-        // Firebase 초기화
-        let db;
-        try {
-            firebase.initializeApp(firebaseConfig);
-            db = firebase.database();
-            console.log('✅ Firebase 연결 성공');
-        } catch (error) {
-            console.error('❌ Firebase 설정 필요:', error);
-        }
 
-        // ========== 데이터 ==========
-        const ADMIN_PASSWORD = "minho2025";
+
+        const ADMIN_PASSWORD = "minho2024";
+        
         const videos = [
             { id: 'Ghg7vG3NMs4', title: 'Hankyeryeong Pass', initialViews: 6282 },
             { id: 'ILppFoa3FTI', title: 'Lonely Love', initialViews: 16192 },
@@ -751,48 +664,65 @@
             { id: '1LlNcwtxsgg', title: 'I\'ll Give You the Love I Have Left', initialViews: 8234 },
             { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 7156 },
             { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews: 9421 },
-            { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 254180 }
+            { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 254180 },
+            { id: '0JeQF_nrSmU', title: '내 곁에 있어주 (Stay by My Side) Official MV', initialViews: 43353 },
+            { id: '33xZoSnV5t0', title: 'Stay by My Side(내 곁에 있어주) | 1theK', initialViews: 25008 },
+            { id: 'ZJo6KHpI-2k', title: '한계령 (Hankyeryeong Pass) Official MV', initialViews: 16075 },
+            { id: 'C7Y9D4hV3QU', title: 'Hankyeryeong Pass(한계령) | 1theK', initialViews: 6282 }
         ];
 
+        let db;
         let currentIndex = 0;
         let isPlaying = false;
         let countdown = 0;
         let timerInterval;
         let viewsData = {};
 
-        // ========== Firebase 데이터 초기화 ==========
+        // Firebase 초기화
         function initializeFirebase() {
-            if (!db) return;
-
-            // 초기 데이터 설정
-            videos.forEach((video, index) => {
-                db.ref('views/' + index).once('value', (snapshot) => {
-                    if (!snapshot.exists()) {
-                        db.ref('views/' + index).set(video.initialViews);
-                    }
+            try {
+                firebase.initializeApp(firebaseConfig);
+                db = firebase.database();
+                
+                // 초기 데이터 설정
+                videos.forEach((video, index) => {
+                    db.ref('views/' + index).once('value', (snapshot) => {
+                        if (!snapshot.exists()) {
+                            db.ref('views/' + index).set(video.initialViews);
+                        }
+                    });
                 });
-            });
 
-            // 실시간 리스너
-            db.ref('views').on('value', (snapshot) => {
-                viewsData = snapshot.val() || {};
+                // 실시간 리스너
+                db.ref('views').on('value', (snapshot) => {
+                    viewsData = snapshot.val() || {};
+                    updateUI();
+                });
+
+                document.getElementById('firebaseStatus').textContent = '✅ Firebase 연결됨';
+                setTimeout(() => {
+                    document.getElementById('firebaseStatus').style.display = 'none';
+                }, 3000);
+            } catch (error) {
+                console.error('Firebase 초기화 실패:', error);
+                document.getElementById('firebaseStatus').textContent = '⚠️ Firebase 설정 필요';
+                document.getElementById('firebaseStatus').style.background = 'rgba(255, 107, 107, 0.9)';
+                
+                // Firebase 없이도 작동하도록 기본 데이터 설정
+                videos.forEach((video, index) => {
+                    viewsData[index] = video.initialViews;
+                });
                 updateUI();
-            });
+            }
         }
 
-        // ========== UI 업데이트 ==========
         function updateUI() {
-            let totalCurrent = 0;
-            let totalInitial = 0;
             let tableHTML = '';
 
             videos.forEach((video, index) => {
                 const currentViews = viewsData[index] || video.initialViews;
                 const increase = currentViews - video.initialViews;
                 const isCurrentPlaying = index === currentIndex && isPlaying;
-
-                totalCurrent += currentViews;
-                totalInitial += video.initialViews;
 
                 tableHTML += `
                     <tr class="${isCurrentPlaying ? 'playing' : ''}" onclick="playVideo(${index})">
@@ -811,23 +741,17 @@
 
             document.getElementById('songTable').innerHTML = tableHTML;
 
-            const totalIncrease = totalCurrent - totalInitial;
-            const avgIncrease = totalInitial > 0 ? ((totalIncrease / totalInitial) * 100).toFixed(1) : 0;
-
-            document.getElementById('totalViews').textContent = (totalCurrent / 1000).toFixed(1) + 'K';
-            document.getElementById('totalIncrease').textContent = '+' + (totalIncrease / 1000).toFixed(1) + 'K';
-            document.getElementById('avgIncrease').textContent = avgIncrease + '%';
-
             if (isPlaying) {
                 const currentViews = viewsData[currentIndex] || videos[currentIndex].initialViews;
                 document.getElementById('currentViews').textContent = currentViews.toLocaleString();
             }
         }
 
-        // ========== 비디오 재생 ==========
         function playVideo(index) {
             currentIndex = index;
             isPlaying = true;
+            
+            // 45~55초 사이 랜덤 시작
             const randomStart = Math.floor(Math.random() * 11) + 45;
             
             document.getElementById('videoFrame').src = 
@@ -846,6 +770,9 @@
                 db.ref('views/' + index).transaction((current) => {
                     return (current || videos[index].initialViews) + 1;
                 });
+            } else {
+                viewsData[index] = (viewsData[index] || videos[index].initialViews) + 1;
+                updateUI();
             }
         }
 
@@ -857,7 +784,6 @@
             playVideo(nextIndex);
         }
 
-        // ========== 타이머 ==========
         function startTimer(duration) {
             countdown = duration;
             updateTimer();
@@ -879,7 +805,6 @@
             document.getElementById('countdown').textContent = countdown + '초';
         }
 
-        // ========== 관리자 기능 ==========
         function showPasswordModal() {
             document.getElementById('passwordModal').classList.add('show');
             document.getElementById('passwordInput').value = '';
@@ -922,7 +847,7 @@
 
         function saveAdminData() {
             if (!db) {
-                alert('❌ Firebase 설정이 필요합니다');
+                alert('❌ Firebase 설정이 필요합니다. 코드의 firebaseConfig를 확인하세요.');
                 return;
             }
 
@@ -936,10 +861,9 @@
             alert('✅ 저장 완료! 모든 사용자에게 실시간 반영됩니다.');
         }
 
-        // ========== 떠다니는 하트 ==========
         function createFloatingHearts() {
             const container = document.getElementById('floatingHearts');
-            const hearts = ['💙', '💜', '💚', '🩵', '💗'];
+            const hearts = ['💙', '💚', '🩵', '💎', '✨'];
             
             setInterval(() => {
                 const heart = document.createElement('div');
@@ -954,7 +878,6 @@
             }, 800);
         }
 
-        // ========== 초기화 ==========
         window.onload = function() {
             initializeFirebase();
             createFloatingHearts();
