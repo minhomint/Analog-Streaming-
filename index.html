@@ -223,32 +223,13 @@
             color: white;
         }
         
-        .video-stats {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 16px;
-        }
-        
-        .views-count {
-            color: #00CEC9;
-            font-weight: 800;
-            font-size: 22px;
-        }
-        
         .timer-box {
             background: rgba(0, 206, 201, 0.2);
             padding: 10px 20px;
             border-radius: 15px;
             border: 2px solid #00CEC9;
+            text-align: center;
+            margin-bottom: 15px;
         }
         
         .timer-number {
@@ -267,7 +248,6 @@
             font-size: 18px;
             font-weight: 800;
             cursor: pointer;
-            margin-top: 15px;
             transition: all 0.3s;
             box-shadow: 0 6px 20px rgba(0, 206, 201, 0.4);
         }
@@ -593,7 +573,7 @@
     <div class="container">
         <div class="header">
             <div class="admin-lock" onclick="showPasswordModal()">🔒</div>
-            <h1> 장민호 </h1>
+            <h1>💙 장민호 💙</h1>
             <h2>ANALOG Vol.1</h2>
             <div class="live-badge">🔴 LIVE 총공 진행중</div>
         </div>
@@ -611,10 +591,8 @@
                     <span>▶</span> NOW PLAYING
                 </div>
                 <div class="video-title" id="videoTitle">-</div>
-                <div class="video-stats">
-                    <div class="timer-box" style="margin: 0 auto;">
-                        ⏱️ 다음 곡까지 <span class="timer-number" id="countdown">-</span>
-                    </div>
+                <div class="timer-box">
+                    ⏱️ 다음 곡까지 <span class="timer-number" id="countdown">-</span>
                 </div>
                 <button class="next-btn" onclick="playNextRandom()">🔄 다음 곡 랜덤 재생</button>
             </div>
@@ -637,12 +615,13 @@
         </div>
 
         <div class="footer">
-            💙 Made with <span class="footer-heart">💙</span> by 민호특공대
+            💙 Made with <span class="footer-heart"></span> by 민호특공대💙
             <div style="margin-top: 10px; font-size: 15px; font-weight: 700; color: #00CEC9;">
-                ✨ 함께하면 우리는 무엇이든 할 수 있습니다 ✨
+                ✨ 민호특공대 함께라면 무엇이든 할 수 있습니다 ✨
             </div>
-            <div style="margin-top: 8px; font-size: 14px; opacity: 0.8;">
-            
+          
+            </div>
+        </div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -668,10 +647,10 @@
             { id: 'ILppFoa3FTI', title: 'Lonely Love', initialViews: 25105 },
             { id: 'DKgiBUaZXr4', title: 'My Reflection in My Heart', initialViews: 39582 },
             { id: 'BRiBNS0aTVo', title: '내 곁에 있어주 | 야외녹음실 ｜LIVE', initialViews: 149935 },
-            { id: '1LlNcwtxsgg', title: 'I\'ll Give You the Love I Have Left', initialViews: 38498},
-            { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 24577},
-            { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews:26876 },
-            { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 260911},
+            { id: '1LlNcwtxsgg', title: 'I\'ll Give You the Love I Have Left', initialViews: 38498 },
+            { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 24577 },
+            { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews: 26876 },
+            { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 260911 },
             { id: '0JeQF_nrSmU', title: '내 곁에 있어주 (Stay by My Side) Official MV', initialViews: 67341 },
             { id: '33xZoSnV5t0', title: 'Stay by My Side(내 곁에 있어주) | 1theK', initialViews: 26439 },
             { id: 'ZJo6KHpI-2k', title: '한계령 (Hankyeryeong Pass) Official MV', initialViews: 28322 },
@@ -749,7 +728,6 @@
             });
 
             document.getElementById('songTable').innerHTML = tableHTML;
-
         }
 
         function playVideo(index) {
@@ -766,31 +744,6 @@
             startTimer(randomDuration);
             updateUI();
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
-            
-            // 처음부터 재생 (조회수 반영을 위해)
-            document.getElementById('videoFrame').src = 
-                `https://www.youtube.com/embed/${videos[index].id}?autoplay=1&controls=1`;
-            document.getElementById('videoTitle').textContent = videos[index].title;
-            
-            const currentViews = viewsData[index] || videos[index].initialViews;
-            document.getElementById('currentViews').textContent = currentViews.toLocaleString();
-
-            // 45~55초 랜덤 타이머
-            const randomDuration = Math.floor(Math.random() * 11) + 45;
-            startTimer(randomDuration);
-            updateUI();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            // Firebase에 조회수 +1
-            if (db) {
-                db.ref('views/' + index).transaction((current) => {
-                    return (current || videos[index].initialViews) + 1;
-                });
-            } else {
-                viewsData[index] = (viewsData[index] || videos[index].initialViews) + 1;
-                updateUI();
-            }
         }
 
         function playNextRandom() {
