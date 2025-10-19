@@ -573,7 +573,7 @@
     <div class="container">
         <div class="header">
             <div class="admin-lock" onclick="showPasswordModal()">🔒</div>
-            <h1>💙 장민호 💙</h1>
+            <h1> 장민호 </h1>
             <h2>ANALOG Vol.1</h2>
             <div class="live-badge">🔴 LIVE 총공 진행중</div>
         </div>
@@ -849,12 +849,15 @@
         }
 
         window.onload = function() {
-            initializeFirebase();
-            createFloatingHearts();
-            setTimeout(() => {
-                playVideo(0);
-            }, 500);
+    initializeFirebase();
+    createFloatingHearts();
+    setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * videos.length);
+        playVideo(randomIndex);  // ← 랜덤 인덱스로 재생
+    }, 500);
+
         };
     </script>
 </body>
 </html>
+
