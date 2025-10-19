@@ -599,7 +599,7 @@
         </div>
 
         <div class="mission-banner">
-            🔥 목표를 향하여 으라차차차! 🔥
+            🔥 목표를 향해 함께 달려요! 으라차차차! 🔥
         </div>
 
         <div class="video-container">
@@ -640,12 +640,15 @@
         </div>
 
         <div class="footer">
-            💙 Made with <span class="footer-heart"></span> by 민호특공대💙
+            💙 Made with <span class="footer-heart">💙</span> by 민호특공대
             <div style="margin-top: 10px; font-size: 15px; font-weight: 700; color: #00CEC9;">
-                ✨ 민호특공대 함께라면 무엇이든 할 수 있습니다 ✨
+                ✨ 함께하면 우리는 무엇이든 할 수 있습니다 ✨
             </div>
             <div style="margin-top: 8px; font-size: 14px; opacity: 0.8;">
-        
+                🏆 새로운 역사를 함께 만들어가요! 🏆
+            </div>
+            <div style="margin-top: 10px; font-size: 12px; opacity: 0.6; color: #00CEC9;">
+                🔥 Firebase 실시간 동기화 🔥
             </div>
         </div>
     </div>
@@ -666,21 +669,21 @@
             measurementId: "G-SRN2TZCE82"
         };
 
-        const ADMIN_PASSWORD = "minho2025";
+        const ADMIN_PASSWORD = "minho2024";
         
         const videos = [
-            { id: 'Ghg7vG3NMs4', title: 'Hankyeryeong Pass', initialViews: 36847 },
-            { id: 'ILppFoa3FTI', title: 'Lonely Love', initialViews: 25105 },
-            { id: 'DKgiBUaZXr4', title: 'My Reflection in My Heart', initialViews: 39582 },
-            { id: 'BRiBNS0aTVo', title: '내 곁에 있어주 | 야외녹음실 ｜LIVE', initialViews: 151034 },
-            { id: '1LlNcwtxsgg', title: 'I\'ll Give You the Love I Have Left', initialViews: 38498 },
-            { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 24577 },
-            { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews: 26876 },
-            { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 260911 },
+            { id: 'Ghg7vG3NMs4', title: 'Hankyeryeong Pass', initialViews: 6282 },
+            { id: 'ILppFoa3FTI', title: 'Lonely Love', initialViews: 16192 },
+            { id: 'DKgiBUaZXr4', title: 'My Reflection in My Heart', initialViews: 5841 },
+            { id: 'BRiBNS0aTVo', title: '내 곁에 있어주 | 야외녹음실 ｜LIVE', initialViews: 45788 },
+            { id: '1LlNcwtxsgg', title: 'I\'ll Give You the Love I Have Left', initialViews: 8234 },
+            { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 7156 },
+            { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews: 9421 },
+            { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 254180 },
             { id: '0JeQF_nrSmU', title: '내 곁에 있어주 (Stay by My Side) Official MV', initialViews: 43353 },
-            { id: '33xZoSnV5t0', title: 'Stay by My Side(내 곁에 있어주) | 1theK', initialViews: 26439 },
-            { id: 'ZJo6KHpI-2k', title: '한계령 (Hankyeryeong Pass) Official MV', initialViews: 28322 },
-            { id: 'C7Y9D4hV3QU', title: 'Hankyeryeong Pass(한계령) | 1theK', initialViews: 8155 }
+            { id: '33xZoSnV5t0', title: 'Stay by My Side(내 곁에 있어주) | 1theK', initialViews: 25008 },
+            { id: 'ZJo6KHpI-2k', title: '한계령 (Hankyeryeong Pass) Official MV', initialViews: 16075 },
+            { id: 'C7Y9D4hV3QU', title: 'Hankyeryeong Pass(한계령) | 1theK', initialViews: 6282 }
         ];
 
         let db;
@@ -773,7 +776,9 @@
             const currentViews = viewsData[index] || videos[index].initialViews;
             document.getElementById('currentViews').textContent = currentViews.toLocaleString();
 
-            startTimer(60);
+            // 45~55초 랜덤 타이머
+            const randomDuration = Math.floor(Math.random() * 11) + 45;
+            startTimer(randomDuration);
             updateUI();
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
