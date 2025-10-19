@@ -642,8 +642,7 @@
                 ✨ 함께하면 우리는 무엇이든 할 수 있습니다 ✨
             </div>
             <div style="margin-top: 8px; font-size: 14px; opacity: 0.8;">
-             
-        </div>
+            
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -670,8 +669,8 @@
             { id: 'DKgiBUaZXr4', title: 'My Reflection in My Heart', initialViews: 39582 },
             { id: 'BRiBNS0aTVo', title: '내 곁에 있어주 | 야외녹음실 ｜LIVE', initialViews: 149935 },
             { id: '1LlNcwtxsgg', title: 'I\'ll Give You the Love I Have Left', initialViews: 38498},
-            { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 24577 },
-            { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews: 35876 },
+            { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 24577},
+            { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews:26876 },
             { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 260911},
             { id: '0JeQF_nrSmU', title: '내 곁에 있어주 (Stay by My Side) Official MV', initialViews: 67341 },
             { id: '33xZoSnV5t0', title: 'Stay by My Side(내 곁에 있어주) | 1theK', initialViews: 26439 },
@@ -751,10 +750,6 @@
 
             document.getElementById('songTable').innerHTML = tableHTML;
 
-            if (isPlaying && currentIndex >= 0) {
-                const currentViews = viewsData[currentIndex] || videos[currentIndex].initialViews;
-                document.getElementById('currentViews').textContent = currentViews.toLocaleString();
-            }
         }
 
         function playVideo(index) {
@@ -771,8 +766,6 @@
             startTimer(randomDuration);
             updateUI();
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // 자동 조회수 증가 제거 - 관리자만 수동으로 입력
         };
             
             // 처음부터 재생 (조회수 반영을 위해)
@@ -912,4 +905,3 @@
     </script>
 </body>
 </html>
-
