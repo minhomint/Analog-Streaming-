@@ -593,7 +593,7 @@
     <div class="container">
         <div class="header">
             <div class="admin-lock" onclick="showPasswordModal()">🔒</div>
-            <h1>💙 장민호 💙</h1>
+            <h1> 장민호 </h1>
             <h2>ANALOG Vol.1</h2>
             <div class="live-badge">🔴 LIVE 총공 진행중</div>
         </div>
@@ -612,10 +612,7 @@
                 </div>
                 <div class="video-title" id="videoTitle">-</div>
                 <div class="video-stats">
-                    <div class="stat-item">
-                        👁️ <span class="views-count" id="currentViews">0</span> 조회수
-                    </div>
-                    <div class="timer-box">
+                    <div class="timer-box" style="margin: 0 auto;">
                         ⏱️ 다음 곡까지 <span class="timer-number" id="countdown">-</span>
                     </div>
                 </div>
@@ -645,7 +642,7 @@
                 ✨ 함께하면 우리는 무엇이든 할 수 있습니다 ✨
             </div>
             <div style="margin-top: 8px; font-size: 14px; opacity: 0.8;">
-               
+             
         </div>
     </div>
 
@@ -665,21 +662,21 @@
             measurementId: "G-SRN2TZCE82"
         };
 
-        const ADMIN_PASSWORD = "minho2024";
+        const ADMIN_PASSWORD = "@minho0728";
         
         const videos = [
-            { id: 'Ghg7vG3NMs4', title: 'Hankyeryeong Pass', initialViews: 6282 },
-            { id: 'ILppFoa3FTI', title: 'Lonely Love', initialViews: 16192 },
-            { id: 'DKgiBUaZXr4', title: 'My Reflection in My Heart', initialViews: 5841 },
-            { id: 'BRiBNS0aTVo', title: '내 곁에 있어주 | 야외녹음실 ｜LIVE', initialViews: 45788 },
-            { id: '1LlNcwtxsgg', title: 'I\'ll Give You the Love I Have Left', initialViews: 8234 },
-            { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 7156 },
-            { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews: 9421 },
-            { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 254180 },
-            { id: '0JeQF_nrSmU', title: '내 곁에 있어주 (Stay by My Side) Official MV', initialViews: 43353 },
-            { id: '33xZoSnV5t0', title: 'Stay by My Side(내 곁에 있어주) | 1theK', initialViews: 25008 },
-            { id: 'ZJo6KHpI-2k', title: '한계령 (Hankyeryeong Pass) Official MV', initialViews: 16075 },
-            { id: 'C7Y9D4hV3QU', title: 'Hankyeryeong Pass(한계령) | 1theK', initialViews: 6282 }
+            { id: 'Ghg7vG3NMs4', title: 'Hankyeryeong Pass', initialViews: 36847 },
+            { id: 'ILppFoa3FTI', title: 'Lonely Love', initialViews: 25105 },
+            { id: 'DKgiBUaZXr4', title: 'My Reflection in My Heart', initialViews: 39582 },
+            { id: 'BRiBNS0aTVo', title: '내 곁에 있어주 | 야외녹음실 ｜LIVE', initialViews: 149935 },
+            { id: '1LlNcwtxsgg', title: 'I\'ll Give You the Love I Have Left', initialViews: 38498},
+            { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 24577 },
+            { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews: 35876 },
+            { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 260911},
+            { id: '0JeQF_nrSmU', title: '내 곁에 있어주 (Stay by My Side) Official MV', initialViews: 67341 },
+            { id: '33xZoSnV5t0', title: 'Stay by My Side(내 곁에 있어주) | 1theK', initialViews: 26439 },
+            { id: 'ZJo6KHpI-2k', title: '한계령 (Hankyeryeong Pass) Official MV', initialViews: 28322 },
+            { id: 'C7Y9D4hV3QU', title: 'Hankyeryeong Pass(한계령) | 1theK', initialViews: 8155 }
         ];
 
         let db;
@@ -763,6 +760,20 @@
         function playVideo(index) {
             currentIndex = index;
             isPlaying = true;
+            
+            // 처음부터 재생 (조회수 반영을 위해)
+            document.getElementById('videoFrame').src = 
+                `https://www.youtube.com/embed/${videos[index].id}?autoplay=1&controls=1`;
+            document.getElementById('videoTitle').textContent = videos[index].title;
+
+            // 45~55초 랜덤 타이머
+            const randomDuration = Math.floor(Math.random() * 11) + 45;
+            startTimer(randomDuration);
+            updateUI();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // 자동 조회수 증가 제거 - 관리자만 수동으로 입력
+        };
             
             // 처음부터 재생 (조회수 반영을 위해)
             document.getElementById('videoFrame').src = 
@@ -901,5 +912,4 @@
     </script>
 </body>
 </html>
-
 
