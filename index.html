@@ -449,9 +449,18 @@
             color: white;
         }
         
+        .modal-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 206, 201, 0.4);
+        }
+        
         .modal-btn-secondary {
             background: #636e72;
             color: white;
+        }
+        
+        .modal-btn-secondary:hover {
+            background: #2d3436;
         }
         
         .error-msg {
@@ -495,6 +504,11 @@
             border-radius: 8px;
             text-align: center;
             font-weight: 600;
+        }
+        
+        .admin-input:focus {
+            outline: none;
+            border-color: #00CEC9;
         }
         
         .footer {
@@ -585,7 +599,7 @@
         </div>
 
         <div class="mission-banner">
-            🔥 목표를 향해 함께 달려요! 으라차차차! 🔥
+            🔥 목표를 향하여여 으라차차차! 🔥
         </div>
 
         <div class="video-container">
@@ -626,12 +640,12 @@
         </div>
 
         <div class="footer">
-            💙 Made with <span class="footer-heart">💙</span> by 민호특공대
+            💙 Made with <span class="footer-heart"></span> by 민호특공대💙
             <div style="margin-top: 10px; font-size: 13px; opacity: 0.7;">
-                곡별 45~55초 랜덤 구간에서 자동 재생됩니다
+                🎬 처음부터 재생되어 조회수 100% 반영됩니다
             </div>
             <div style="margin-top: 10px; font-size: 12px; opacity: 0.6; color: #00CEC9;">
-                🔥 Firebase 실시간 동기화 🔥
+                
             </div>
         </div>
     </div>
@@ -640,35 +654,33 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
     <script>
-        // Firebase 설정 - 여기에 Firebase 프로젝트 정보를 입력하세요
+        // Firebase 설정
         const firebaseConfig = {
-  apiKey: "AIzaSyDk0r98Ag5htVKH-vVxUzG52SYNcX1G0sA",
-  authDomain: "analog-vol1-mv.firebaseapp.com",
-  databaseURL: "https://analog-vol1-mv-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "analog-vol1-mv",
-  storageBucket: "analog-vol1-mv.firebasestorage.app",
-  messagingSenderId: "40601613117",
-  appId: "1:40601613117:web:de43110328bc627df14b54",
-  measurementId: "G-SRN2TZCE82"
-};
+            apiKey: "AIzaSyDk0r98Ag5htVKH-vVxUzG52SYNcX1G0sA",
+            authDomain: "analog-vol1-mv.firebaseapp.com",
+            databaseURL: "https://analog-vol1-mv-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "analog-vol1-mv",
+            storageBucket: "analog-vol1-mv.firebasestorage.app",
+            messagingSenderId: "40601613117",
+            appId: "1:40601613117:web:de43110328bc627df14b54",
+            measurementId: "G-SRN2TZCE82"
+        };
 
-
-
-        const ADMIN_PASSWORD = "minho2024";
+        const ADMIN_PASSWORD = "minho2025";
         
         const videos = [
-            { id: 'Ghg7vG3NMs4', title: 'Hankyeryeong Pass', initialViews: 6282 },
-            { id: 'ILppFoa3FTI', title: 'Lonely Love', initialViews: 16192 },
-            { id: 'DKgiBUaZXr4', title: 'My Reflection in My Heart', initialViews: 5841 },
-            { id: 'BRiBNS0aTVo', title: '내 곁에 있어주 | 야외녹음실 ｜LIVE', initialViews: 45788 },
-            { id: '1LlNcwtxsgg', title: 'I\'ll Give You the Love I Have Left', initialViews: 8234 },
-            { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 7156 },
-            { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews: 9421 },
-            { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 254180 },
+            { id: 'Ghg7vG3NMs4', title: 'Hankyeryeong Pass', initialViews: 40404 },
+            { id: 'ILppFoa3FTI', title: 'Lonely Love', initialViews: 27186 },
+            { id: 'DKgiBUaZXr4', title: 'My Reflection in My Heart', initialViews: 44904 },
+            { id: 'BRiBNS0aTVo', title: '내 곁에 있어주 | 야외녹음실 ｜LIVE', initialViews: 180175 },
+            { id: '1LlNcwtxsgg', title: 'I\'ll Give You the Love I Have Left', initialViews: 43344 },
+            { id: 'rsW-F7IRGmU', title: 'Just a Friend', initialViews: 26956 },
+            { id: 'H8ZnFKkc7ps', title: 'That Day', initialViews: 29395 },
+            { id: 'q78AVE07wdI', title: 'I will let go', initialViews: 269858 },
             { id: '0JeQF_nrSmU', title: '내 곁에 있어주 (Stay by My Side) Official MV', initialViews: 43353 },
-            { id: '33xZoSnV5t0', title: 'Stay by My Side(내 곁에 있어주) | 1theK', initialViews: 25008 },
-            { id: 'ZJo6KHpI-2k', title: '한계령 (Hankyeryeong Pass) Official MV', initialViews: 16075 },
-            { id: 'C7Y9D4hV3QU', title: 'Hankyeryeong Pass(한계령) | 1theK', initialViews: 6282 }
+            { id: '33xZoSnV5t0', title: 'Stay by My Side(내 곁에 있어주) | 1theK', initialViews: 27841 },
+            { id: 'ZJo6KHpI-2k', title: '한계령 (Hankyeryeong Pass) Official MV', initialViews: 39955 },
+            { id: 'C7Y9D4hV3QU', title: 'Hankyeryeong Pass(한계령) | 1theK', initialViews: 9624 }
         ];
 
         let db;
@@ -703,12 +715,14 @@
                 setTimeout(() => {
                     document.getElementById('firebaseStatus').style.display = 'none';
                 }, 3000);
+                
+                console.log('✅ Firebase 연결 성공');
             } catch (error) {
                 console.error('Firebase 초기화 실패:', error);
-                document.getElementById('firebaseStatus').textContent = '⚠️ Firebase 설정 필요';
+                document.getElementById('firebaseStatus').textContent = '⚠️ Firebase 오류';
                 document.getElementById('firebaseStatus').style.background = 'rgba(255, 107, 107, 0.9)';
                 
-                // Firebase 없이도 작동하도록 기본 데이터 설정
+                // Firebase 없이도 작동
                 videos.forEach((video, index) => {
                     viewsData[index] = video.initialViews;
                 });
@@ -741,7 +755,7 @@
 
             document.getElementById('songTable').innerHTML = tableHTML;
 
-            if (isPlaying) {
+            if (isPlaying && currentIndex >= 0) {
                 const currentViews = viewsData[currentIndex] || videos[currentIndex].initialViews;
                 document.getElementById('currentViews').textContent = currentViews.toLocaleString();
             }
@@ -751,17 +765,15 @@
             currentIndex = index;
             isPlaying = true;
             
-            // 45~55초 사이 랜덤 시작
-            const randomStart = Math.floor(Math.random() * 11) + 45;
-            
+            // 처음부터 재생 (조회수 반영을 위해)
             document.getElementById('videoFrame').src = 
-                `https://www.youtube.com/embed/${videos[index].id}?start=${randomStart}&autoplay=1&controls=1`;
+                `https://www.youtube.com/embed/${videos[index].id}?autoplay=1&controls=1`;
             document.getElementById('videoTitle').textContent = videos[index].title;
             
             const currentViews = viewsData[index] || videos[index].initialViews;
             document.getElementById('currentViews').textContent = currentViews.toLocaleString();
 
-            startTimer(50);
+            startTimer(60);
             updateUI();
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -847,7 +859,7 @@
 
         function saveAdminData() {
             if (!db) {
-                alert('❌ Firebase 설정이 필요합니다. 코드의 firebaseConfig를 확인하세요.');
+                alert('❌ Firebase 연결이 필요합니다. 페이지를 새로고침하세요.');
                 return;
             }
 
@@ -881,7 +893,9 @@
         window.onload = function() {
             initializeFirebase();
             createFloatingHearts();
-            playVideo(0);
+            setTimeout(() => {
+                playVideo(0);
+            }, 500);
         };
     </script>
 </body>
