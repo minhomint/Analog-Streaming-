@@ -92,10 +92,9 @@
     <script>
         // ⚠️ 설정: YouTube 영상 ID
         const VIDEO_ID = 'v_3hazNandw';
-        const MIN_TIME = 40;
-        const MAX_TIME = 58;
-        const API_KEY = 'AIzaSyDbHL5Z8hEgXujxgO2DaZuypKHvWB1mTi0
-';
+        const MIN_TIME = 45;
+        const MAX_TIME = 55;
+        const API_KEY = 'AIzaSyAXuNxMKrMXfxx5vO5VCo77pe_x7DLBRAE';
         
         let player;
         let checkInterval;
@@ -146,10 +145,8 @@
 
         // 플레이어 준비 완료
         function onPlayerReady(event) {
+            // 페이지 로드시 1회만 통계 가져오기
             loadStats();
-            
-            // 60초마다 통계 업데이트
-            setInterval(loadStats, 60000);
             
             setTimeout(() => {
                 playFromStart();
@@ -163,7 +160,7 @@
             }
         }
 
-        // 0초부터 38~48초 랜덤 재생
+        // 0초부터 38~43초 랜덤 재생
         function playFromStart() {
             if (!player || !player.seekTo) return;
             targetStopTime = MIN_TIME + Math.random() * (MAX_TIME - MIN_TIME);
@@ -224,7 +221,7 @@
                         }
                     }
                     
-                    console.log('✅ 통계 업데이트 완료 (60초마다)');
+                    console.log('✅ 통계 업데이트 완료 (페이지 로드시 1회)');
                 }
             } catch (error) {
                 console.error('YouTube API 에러:', error);
@@ -236,6 +233,3 @@
     </script>
 </body>
 </html>
-
-
-
