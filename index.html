@@ -92,9 +92,10 @@
     <script>
         // ⚠️ 설정: YouTube 영상 ID
         const VIDEO_ID = 'v_3hazNandw';
-        const MIN_TIME = 45;
-        const MAX_TIME = 55;
-        const API_KEY = 'AIzaSyDcDBnyNpF4c1Mum7Rv5Rd8gK_VmPgr7Lw';
+        const MIN_TIME = 40;
+        const MAX_TIME = 58;
+        const API_KEY = 'AIzaSyDbHL5Z8hEgXujxgO2DaZuypKHvWB1mTi0
+';
         
         let player;
         let checkInterval;
@@ -162,7 +163,7 @@
             }
         }
 
-        // 0초부터 38~43초 랜덤 재생
+        // 0초부터 38~48초 랜덤 재생
         function playFromStart() {
             if (!player || !player.seekTo) return;
             targetStopTime = MIN_TIME + Math.random() * (MAX_TIME - MIN_TIME);
@@ -235,5 +236,6 @@
     </script>
 </body>
 </html>
+
 
 
