@@ -23,6 +23,28 @@
                 width: 280px;
             }
         }
+        
+        /* 볼륨 슬라이더 커스텀 스타일 */
+        #volumeSlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #14b8a6;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(20, 184, 166, 0.4);
+        }
+
+        #volumeSlider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #14b8a6;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(20, 184, 166, 0.4);
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-pink-50 via-white to-pink-100 p-2 md:p-4">
@@ -42,12 +64,25 @@
                 <div id="youtube-player" class="w-full h-full"></div>
             </div>
 
-            <!-- 타이머 표시 -->
-            <div class="text-center mb-4">
-                <div class="inline-block bg-teal-400 px-4 py-2 md:px-6 md:py-3 rounded-full">
-                    <span class="text-white text-sm md:text-lg font-semibold">
-                        다음 곡까지 <span id="timer" class="text-xl md:text-2xl font-bold">0</span>초
-                    </span>
+            <!-- 볼륨바 + 타이머 표시 -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4 mb-4">
+                <!-- 볼륨 조절 바 -->
+                <div class="w-full md:w-auto md:flex-1 max-w-xs">
+                    <div class="flex items-center gap-3 bg-gradient-to-r from-teal-50 to-teal-100 px-4 py-2 md:px-5 md:py-3 rounded-full border-2 border-teal-300">
+                        <span class="text-lg md:text-xl">🔊</span>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="50" 
+                               class="flex-1 h-2 rounded-lg appearance-none cursor-pointer bg-teal-200">
+                        <span id="volumeDisplay" class="text-teal-700 text-sm md:text-base font-bold min-w-[45px] text-right">50%</span>
+                    </div>
+                </div>
+
+                <!-- 타이머 -->
+                <div class="w-full md:w-auto text-center">
+                    <div class="inline-block bg-teal-400 px-4 py-2 md:px-6 md:py-3 rounded-full">
+                        <span class="text-white text-sm md:text-lg font-semibold">
+                            다음 곡까지 <span id="timer" class="text-xl md:text-2xl font-bold">0</span>초
+                        </span>
+                    </div>
                 </div>
             </div>
 
@@ -145,6 +180,12 @@
 
         // 플레이어 준비 완료
         function onPlayerReady(event) {
+            // 저장된 볼륨 불러오기
+            const savedVolume = localStorage.getItem('playerVolume') || 50;
+            player.setVolume(savedVolume);
+            document.getElementById('volumeSlider').value = savedVolume;
+            document.getElementById('volumeDisplay').textContent = savedVolume + '%';
+            
             // 페이지 로드시 1회만 통계 가져오기
             loadStats();
             
@@ -164,7 +205,6 @@
         function playFromStart() {
             if (!player || !player.seekTo) return;
             targetStopTime = MIN_TIME + Math.random() * (MAX_TIME - MIN_TIME);
-            console.log('🎵 0초 시작 → ' + targetStopTime.toFixed(1) + '초 정지');
             player.seekTo(0, true);
             player.playVideo();
         }
@@ -182,7 +222,6 @@
                     document.getElementById('timer').textContent = remainingSeconds;
                     
                     if (currentTime >= targetStopTime - 0.3) {
-                        console.log('✅ ' + targetStopTime.toFixed(1) + '초 도달! 새로 시작');
                         clearInterval(checkInterval);
                         playFromStart();
                     }
@@ -220,13 +259,21 @@
                             document.getElementById('thumbnail-img').src = thumbnail.url;
                         }
                     }
-                    
-                    console.log('✅ 통계 업데이트 완료 (페이지 로드시 1회)');
                 }
             } catch (error) {
                 console.error('YouTube API 에러:', error);
             }
         }
+
+        // 볼륨 조절 이벤트
+        document.getElementById('volumeSlider').addEventListener('input', function() {
+            const volume = this.value;
+            if (player && player.setVolume) {
+                player.setVolume(volume);
+            }
+            document.getElementById('volumeDisplay').textContent = volume + '%';
+            localStorage.setItem('playerVolume', volume);
+        });
         
         // 페이지 로드시 썸네일 즉시 설정
         setThumbnail();
